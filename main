@@ -1,0 +1,130 @@
+//these lines of code initialize global variables and the lists of data required
+//to make the app function, and tell you about your sign
+var birthMonth;
+var birthDay;
+var birthTime;
+var SunSign;
+var RisingSign;
+var timei;
+var signi;
+var risingi;
+var sunInfo = ["What is the most valuable resource? For Capricorn, the answer is clear: Time. Capricorn is climbing the mountain straight to the top and knows that patience, perseverance, and dedication is the only way to scale. The last earth sign of the zodiac, Capricorn, is represented by the sea-goat, a mythological creature with the body of a goat and the tail of a fish. Accordingly, Capricorns are skilled at navigating both the material and emotional realms.",
+ "Aquarius is actually the last air sign of the zodiac. Innovative, progressive, and shamelessly revolutionary, Aquarius is represented by the water bearer, the mystical healer who bestows water, or life, upon the land. Accordingly, Aquarius is the most humanitarian astrological sign. At the end of the day, Aquarius is dedicated to making the world a better place",
+ "Pisces is the most intuitive, sensitive, and empathetic sign of the entire zodiac — and that’s because it’s the last of the last. As the final sign, Pisces has absorbed every lesson — the joys and the pain, the hopes and the fears — learned by all of the other signs. It's symbolized by two fish swimming in opposite directions, representing the constant division of Pisces' attention between fantasy and reality.",
+ "The first sign of the zodiac, Aries loves to be number one. Naturally, this dynamic fire sign is no stranger to competition. Bold and ambitious, Aries dives headfirst into even the most challenging situations—and they'll make sure they always come out on top!",
+ "What sign is more likely to take a six-hour bath, followed by a luxurious Swedish massage and decadent dessert spread? Why Taurus, of course! Taurus is an earth sign represented by the bull. Like their celestial spirit animal, Taureans enjoy relaxing in serene, bucolic environments surrounded by soft sounds, soothing aromas, and succulent flavors.",
+ "Have you ever been so busy that you wished you could clone yourself just to get everything done? That's the Gemini experience in a nutshell. Spontaneous, playful, and adorably erratic, Gemini is driven by its insatiable curiosity. Appropriately symbolized by the celestial twins, this air sign was interested in so many pursuits that it had to double itself. You know, NBD!",
+ "Represented by the crab, Cancer seamlessly weaves between the sea and shore representing Cancer’s ability to exist in both emotional and material realms. Cancers are highly intuitive and their psychic abilities manifest in tangible spaces. But—just like the hard-shelled crustaceans—this water sign is willing to do whatever it takes to protect itself emotionally. In order to get to know this sign, you're going to need to establish trust!",
+ "Roll out the red carpet because Leo has arrived. Passionate, loyal, and infamously dramatic, Leo is represented by the lion and these spirited fire signs are the kings and queens of the celestial jungle. They're delighted to embrace their royal status: Vivacious, theatrical, and fiery, Leos love to bask in the spotlight and celebrate… well, themselves.",
+ "Virgos are logical, practical, and systematic in their approach to life. Virgo is an earth sign historically represented by the goddess of wheat and agriculture, an association that speaks to Virgo's deep-rooted presence in the material world. This earth sign is a perfectionist at heart and isn’t afraid to improve skills through diligent and consistent practice.",
+ "Balance, harmony, and justice define Libra energy. As a cardinal air sign, Libra is represented by the scales (interestingly, the only inanimate object of the zodiac), an association that reflects Libra's fixation on establishing equilibrium. Libra is obsessed with symmetry and strives to create equilibrium in all areas of life — especially when it comes to matters of the heart.",
+ "Elusive and mysterious, Scorpio is one of the most misunderstood signs of the zodiac. Scorpio is a water sign that uses emotional energy as fuel, cultivating powerful wisdom through both the physical and unseen realms. In fact, Scorpio derives its extraordinary courage from its psychic abilities, which is what makes this sign one of the most complicated, dynamic signs of the zodiac.",
+ "Oh, the places Sagittarius goes! But… actually. This fire sign knows no bounds. Represented by the archer, Sagittarians are always on a quest for knowledge. The last fire sign of the zodiac, Sagittarius launches its many pursuits like blazing arrows, chasing after geographical, intellectual, and spiritual adventures."];
+var risingInfo = ["If you're a Capricorn rising, you likely come off as mature, organized, and driven. You are always put together and prepared. People may think of you as a skilled businessperson with little interest in games, both in your professional and personal life. You strive for greatness, and you expect much of yourself and others. Much of this is because strict Saturn rules Capricorn, giving you major disciplinarian vibes.",
+"Aquarius is actually the third air sign (along with Gemini and Libra) and a symbol of the water bearer. This sign has much more to do with community and being part of the collective; it's about sharing the water, not being the water. You're also known for being very individualistic and unafraid to let your freak flag fly. Your ruling planet is Uranus, which is as eccentric as you are.",
+"If you’re a Pisces rising, people likely describe you as dreamy and empathetic, and you may sometimes have your head a bit in the clouds. This sign is known as the psychic of the zodiac and since it’s the last sign, it carries all the other signs in it. Therefore, you are intrinsically linked to all of humanity.Pisces' ruling planet is the magical Neptune, which makes you mysterious and alluring.",
+"If you're an Aries rising, chances are you come off as brave, opinionated, and independent. You have a powerful and commanding presence and may even be seen as intimidating. You are the fierce warrior of the zodiac. Aries' ruling planet is Mars, the god of war. Being the first sign, you lead the cavalry. As the first fire sign of the zodiac, you are intensely competitive and view the world as a series of competitions. ",
+"If you're a Taurus rising, you likely give off fierce, dependable, and strong-willed vibes. But you also have a softer side. You enjoy the good things in life, including beautiful clothes, fine food, and massages. Your ruling planet is sensual Venus, the goddess of beauty, love, and abundance, so you can't help that you have refined taste. You're the first earth sign, and you represent earthiness in its purest form.",
+"If you're a Gemini rising, people likely perceive you as talkative, bright, and curious. Your highly creative mind can spit out ideas a mile a minute. However, you might get overwhelmed sometimes by the desire to do everything at once. This same principle can be applied to your love life. Geminis are infamous heartbreakers and can be very picky when settling down with someone.Gemini's ruling planet is Mercury, the messenger of the gods. As a result, you come off as charming, well-spoken, and are likely an excellent public speaker.",
+"You like your routine — after all, you've taken time and care to establish yourself and make things exactly the way you want them to be. Your home life is very important to you, so you tend to care deeply about your personal space and the people allowed inside. You might also be the person people come to with problems because you know how to hold space for people. But don't get it twisted, Cancers are more than the sensitive beings people often make them out to be. They come with pinchers and a hard exterior, after all.", 
+"If you're a Leo rising, people probably think of you as confident, vibrant, and fun. You have a flair for the dramatic, and people immediately notice when you walk into the room. Whether you work in the arts or just have an epic Instagram feed, you are also highly creative. Seeing you live your best life inspires others to do the same. Leo season is the summer, and you carry that carefree, sunny spirit with you. This sign is also known as the child of the zodiac. Like children, you live in the moment but can also be a little demanding. Leo's ruling planet is the powerful sun,", 
+"If you're a Virgo rising, people who meet you may describe you as organized, put together, and reliable. You may give the air of a perfectionist, which can be a bit intimidating at times. This sign's ruling planet is messenger Mercury, and as a result, Virgo risings are communicative and curious. Friends and lovers likely come to you for advice. Virgo is the healer of the zodiac and cares deeply about those around them. If you're a Virgo rising, make sure to carve out time to care for yourself as well as others.",
+"If you're a Libra rising, those who come into contact with you likely think of you as attractive, romantic, and sweet (although you may have a sharp tongue at times, even if that just means you're witty). You may have heard that Libras are indecisive, and while this may be true, it comes with good intentions because you generally want everyone to be happy. The scales represent this air sign, and as a result, you may always try to keep the peace and ensure justice is served.",
+"Most of the time, there's so much going on behind that cool, pristine face that people want to know more and can't stay away. Rising Scorpios are intense, and you have your reasons. You've likely had some experiences that have caused you to put up your guard, especially if you have other Scorpio influences in your chart. This sign is ruled by both the warrior Mars, and Pluto, the lord of the underworld, which explains some of the intensity.",
+"If you're a Sagittarius rising, people may describe you as intelligent and a fabulous storyteller who is always the life of the party. You have a zest for life that's contagious and are known as the optimist of the zodiac. The glass is always half full for you. You are outspoken, opinionated, and say what others aren’t saying. You can often be quite blunt, and sometimes it backfires. But, because the lucky planet Jupiter rules Sagittarius, you always come out on top."];
+var dates = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31,];
+var signs = ["Capricorn", "Aquarius", "Pisces", "Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius"];
+var time = ["Time", "6 to 8 am", "8 to 10 am", "10 am to Noon", "Noon to 2pm", "2 to 4pm", "4 to 6pm", "6 to 8pm",
+"8 to 10pm", "10pm to Midnight", "Midnight to 2 am", "2 am to 4 am", "4 am to 6 am"];
+
+
+//this function uses the other two functions sunsign find and risingsign find
+//and plugs them into the appropriate text boxes, it also takes your sign and
+//finds the corresponding about section and puts it into the text boxes
+function UpdateScreen() {
+  birthMonth = getText("MonthInput");
+  for (var i = 0; i < dates.length; i++) {
+    if (dates[i] == getText("DayInput")) {
+      birthDay = getText("DayInput");
+    }
+  }
+  birthTime = getText("TimeInput");
+  SunSignFind(birthMonth, birthDay);
+  RisingSignFind(birthTime, SunSign);
+  setText("RisingSignOutput", RisingSign);
+  setText("SunSignOutput", SunSign);
+  setText("AboutSun", sunInfo[signi]);
+  setText("AboutRising", risingInfo[risingi]);
+}
+
+
+//this function uses the user inputs and compares them to the different
+//sign dates and then picks the correct sign
+function SunSignFind(month, day) {
+  if (month == "January" && day <= 19 || month == "December" && day > 21) {
+    SunSign = "Capricorn";
+  } else if (month == "January" && day > 19 || month == "February" && day <= 18 ) {
+    SunSign = "Aquarius";
+  } else if (month == "February" && day > 18 || month == "March" && day <= 20 ) {
+    SunSign = "Pisces";
+  }  else if (month == "March" && day > 20 || month == "April" && day <= 19 ) {
+    SunSign = "Aries";
+  }  else if (month == "April" && day > 19 || month == "May" && day <= 20 ) {
+    SunSign = "Taurus";
+  }  else if (month == "May" && day > 20 || month == "June" && day <= 20 ) {
+    SunSign = "Gemini";
+  }  else if (month == "June" && day > 20 || month == "July" && day <= 22 ) {
+    SunSign = "Cancer";
+  }  else if (month == "July" && day > 22 || month == "August" && day <= 22 ) {
+    SunSign = "Leo";
+  }  else if (month == "August" && day > 22 || month == "September" && day <= 22 ) {
+    SunSign = "Virgo";
+  }  else if (month == "September" && day > 22 || month == "October" && day <= 22 ) {
+    SunSign = "Libra";
+  }  else if (month == "October" && day > 22 || month == "November" && day <= 21 ) {
+    SunSign = "Scorpio";
+  } else if (month == "November" && day > 21 || month == "December" && day <= 21 ) {
+    SunSign = "Sagittarius";
+}}
+
+
+
+//this function takes your sun sign and birth time and uses them to
+//output your rising sign
+function RisingSignFind(birthTime, SunSign) {
+  for (var i = 0; i < signs.length; i++) {
+    if (signs[i] == SunSign) {
+      signi = i;
+    }
+  }
+  for (var j = 0; j < time.length; j++) {
+    if (time[j] == birthTime) {
+      timei = j;
+    }
+  }
+
+  if (signi + timei > signs.length - 1) {
+    risingi = (signi + timei) % signs.length;
+  } else {
+    risingi = signi + timei;
+  }
+  RisingSign = signs[risingi];
+}
+
+
+//these lines of code execute the functions when the buttons
+//are pressed
+onEvent("SunNext", "click", function( ) {
+  setScreen("RisingOutputScreen");
+  });
+onEvent("BackButton", "click", function( ) {
+  setScreen("InputScreen");
+  });
+onEvent("InputNext", "click", function( ) {
+  UpdateScreen();
+  setScreen("SunOutputScreen");
+});
+
+
+
+//information about signs credited to Allure Magazine
